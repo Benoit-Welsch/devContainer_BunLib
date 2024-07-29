@@ -1,6 +1,6 @@
 # 📄 devContainer-bun
 
-A vs-code dev container for bun
+A vs-code dev container for bun library
 
 ## 🔧 Requirement
 

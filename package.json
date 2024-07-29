@@ -1,0 +1,42 @@
+{
+  "version": "0.0.1",
+  "module": "./dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "bun build.ts && bun build src/index.ts --outfile=dist/index.js --target=bun  --minify",
+    "build:node": "bun build.ts && bun build src/index.ts --outfile=dist/node.js --target=node  --minify",
+    "build:browser": "bun build.ts && bun build src/index.ts --outfile=dist/browser.js --target=browser  --minify",
+    "build:all": "bun run build:node && bun run build:browser && bun run build",
+    "format": "prettier --write \"src/**/*.ts\" --single-quote --trailing-comma all --tab-width 2",
+    "format:md": "prettier --write  \"**/*.md\" --single-quote --trailing-comma all --tab-width 2",
+    "prepublish": "bun format:md"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "bun-plugin-dts": "^0.2.1",
+    "bun-types": "latest",
+    "prettier": "^3.1.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./nodejs": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/node.js"
+    },
+    "./web": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/browser.js"
+    }
+  },
+  "license": "MIT",
+  "dependencies": {
+    "lodash.mergewith": "^4.6.2"
+  }
+}
